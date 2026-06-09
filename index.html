@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MES 生產管理系統</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>MES 生產管理儀表板</h1>
+
+    <div class="card input-card">
+
+        <div class="form-group">
+            <label>日期</label>
+            <input type="date" id="date">
+        </div>
+
+        <div class="form-group">
+            <label>產量</label>
+            <input type="number" id="quantity" placeholder="輸入產量">
+        </div>
+
+        <div class="form-group">
+            <label>目標產量</label>
+            <input type="number" id="target" placeholder="輸入目標">
+        </div>
+
+        <button onclick="addRecord()">新增紀錄</button>
+
+    </div>
+
+    <div class="dashboard">
+
+        <div class="kpi-card">
+            <h3>今日產量</h3>
+            <span id="todayOutput">0</span>
+        </div>
+
+        <div class="kpi-card">
+            <h3>累積產量</h3>
+            <span id="totalOutput">0</span>
+        </div>
+
+        <div class="kpi-card">
+            <h3>平均產量</h3>
+            <span id="avgOutput">0</span>
+        </div>
+
+        <div class="kpi-card">
+            <h3>達成率</h3>
+            <span id="achievement">0%</span>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>生產趨勢圖</h2>
+
+        <canvas id="productionChart"></canvas>
+
+    </div>
+
+    <div class="card">
+
+        <h2>生產紀錄</h2>
+
+        <input
+        type="text"
+        id="search"
+        placeholder="搜尋日期..."
+        onkeyup="renderTable()">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>產量</th>
+                    <th>目標</th>
+                    <th>達成率</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody id="tableBody"></tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
